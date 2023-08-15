@@ -1,0 +1,39 @@
+.brand-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.cart-btn {
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+}
+
+.logo {
+  display: block;
+  margin: auto;
+  width: 200px;
+  height: 100px;
+}
+
+.product-grid {
+   width: 100%;
+   max-width: 720px;
+   margin: auto;
+}
+
+.flower-item {
+   display: inline-block;
+   text-align: center;
+   margin: 20px;
+}
+
+.flower-image {
+   max-width: 200px;
+   height: 70%;
+   display: block;
+   margin: 0 auto;
+}

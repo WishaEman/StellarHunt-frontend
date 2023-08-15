@@ -2,24 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import Login from "./modules/Login/Login";
-import Signup from "./modules/SignUp/Signup"
+import Signup from "./modules/SignUp/Signup";
+import Home from "./modules/Home/Home";
 
 const router = createBrowserRouter([
   {
-    path: "/Login",
-    element: <Login  backgroundColor="white"/>,
+    path: "/account/login",
+    element: <Login />,
   },
   {
-    path: "/Signup",
+    path: "/account/register",
     element: <Signup />,
-  }
+  },
+  {
+    path: "/",
+    element: <Home />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
