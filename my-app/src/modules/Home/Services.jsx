@@ -7,8 +7,8 @@ const useProducts = (selectedSubcategory) => {
 
   useEffect(() => {
     const apiUrl = selectedSubcategory
-      ? `${BASE_URL}/inventory-management/products/by-category/?category_name=${selectedSubcategory}`
-      : `${BASE_URL}/inventory-management/latest-products/`;
+      ? `${BASE_URL}inventory-management/categories/${selectedSubcategory}/products/`
+      : `${BASE_URL}inventory-management/latest-products/`;
 
     axios.get(apiUrl)
       .then(response => {

@@ -10,6 +10,9 @@ import {
 import Login from "./modules/Login/Login";
 import Signup from "./modules/SignUp/Signup";
 import Home from "./modules/Home/Home";
+import ProductDetails from "./modules/About/ProductDetails";
+import Cart from "./modules/Cart/Cart";
+import Success from "./modules/Cart/Checkout/Success";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +25,22 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/collections/products/:productId",
+    element: <ProductDetails />,
+  },
+  {
+    path: "/checkout",
+    element: <Cart />,
+  },
+  {
+    path: "/successfull/order",
+    element: <Success />
+  },
+  {
+    path: "/category/subcategory/:subcategoryId",
     element: <Home />,
   },
 ]);

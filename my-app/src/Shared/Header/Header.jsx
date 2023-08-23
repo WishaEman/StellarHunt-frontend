@@ -1,7 +1,5 @@
 import './Header.css'
 import {Link} from "react-router-dom";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
        return (
@@ -24,12 +22,13 @@ export default function Header() {
 
               <div className="d-flex col-0.5 align-items-center justify-content-between">
                     <Link to="/account/login">
-                      {/*<FontAwesomeIcon icon={faUser} style={{ fontSize: '24px', color: 'black' }} />*/}
                       <i className="fa fa-user" style={{ fontSize: '24px', color: 'black' }}></i>
                     </Link>
+                    <Link to="/checkout">
                     <button type="button" id="cartButton" className="cart-btn">
                       🛒
                     </button>
+                    </Link>
               </div>
             </div>
         </nav>
