@@ -18,7 +18,7 @@ const useAllCartItems = () => {
   useEffect(() => {
     axios.get(`${BASE_URL}cart-handler/cart-items/`, { headers })
       .then(response => {
-          setCartItems(response.data);
+          setCartItems(response.data.results);
     })
         .catch(error => {
           console.error('Error fetching categories:', error);

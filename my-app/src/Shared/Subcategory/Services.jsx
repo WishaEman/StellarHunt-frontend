@@ -8,7 +8,7 @@ const useSubcategories = (id) => {
   useEffect(() => {
     axios.get(`${BASE_URL}inventory-management/subcategories/${id}/`)
         .then(response => {
-          setSubcategories(response.data);
+          setSubcategories(response.data.results);
         })
         .catch(error => {
           console.error('Error fetching subcategories:', error);

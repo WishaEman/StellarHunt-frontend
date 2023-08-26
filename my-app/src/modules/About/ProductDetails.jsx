@@ -1,5 +1,9 @@
 import {useLocation} from 'react-router-dom';
-import {useState} from "react";
+import {useState, useContext} from "react";
+import  ReactImageMagnify from "react-image-magnify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { MyContext } from '../../data/MyContext';
 import Header from "../../Shared/Header/Header";
 import Footer from "../../Shared/Footer/Footer";
 import handleAddToCart from "./Services";
@@ -9,6 +13,7 @@ export default function ProductDetails() {
   const location = useLocation();
   const { product} = location.state;
   const [quantity, setQuantity] = useState(1);
+  const { productQuantities, setProductQuantities } = useContext(MyContext);
   const formattedPrice = product.price.toLocaleString();
 
 
@@ -24,10 +29,11 @@ export default function ProductDetails() {
 
    const handleCartClick = async () => {
     try {
-      const cartItemResponse = await handleAddToCart(product, quantity);
-      console.log("In product details", cartItemResponse)
+      await handleAddToCart(product, quantity);
+      setProductQuantities({...productQuantities, [product.id]: quantity, })
     } catch (error) {
       console.error('Error handling cart click:', error);
+      toast.error("You need to be logged in to add items to the cart.");
     }
   };
 
@@ -35,15 +41,30 @@ export default function ProductDetails() {
   <div>
       <Header />
       <Category />
+      <ToastContainer position="top-right" autoClose={3000} />
       <div className="container">
         <div className="row">
           <div className="col-md-6 pt-5">
-              <img src={product.image} alt={product.title} className="img-fluid" />
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: product.title,
+                  isFluidWidth: true,
+                  src: product.image,
+                },
+                largeImage: {
+                  src: product.image,
+                  width: 1200,
+                  height: 1800,
+                },
+              }}
+            />
           </div>
           <div className="col-md-6 pt-5" >
+              <br /><br/>
               <h2>{product.title}</h2><br/>
               <p>{product.description}</p><br />
-              <p>Rs. {formattedPrice}.00</p><br/>
+              <p>Rs. {formattedPrice}</p><br/>
               <p><b>Quantity</b></p>
               <button className="btn btn-outline-dark" onClick={decreaseQuantity}>-</button>
               <span className="m-2">{quantity}</span>

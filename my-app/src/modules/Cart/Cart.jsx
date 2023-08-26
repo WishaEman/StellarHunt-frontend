@@ -3,6 +3,7 @@ import Header from "../../Shared/Header/Header";
 import ListCartProducts from "./ListCartProducts";
 import Checkout from "./Checkout/Checkout";
 import Category from "../../Shared/Category/Category";
+import Footer from "../../Shared/Footer/Footer";
 
 export default function Cart() {
   const [totalAmount, setTotalAmount] = useState(0);
@@ -62,12 +63,12 @@ export default function Cart() {
                   </div>
               </div>
               <br/>
-
               <Checkout totalAmount={totalAmount}/>
             </div>
 
           </div>
         </div>
+        <Footer />
       </>
   );
 }

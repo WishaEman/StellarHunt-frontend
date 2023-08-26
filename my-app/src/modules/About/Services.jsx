@@ -7,7 +7,6 @@ const handleAddToCart = (product, quantity) => {
   return new Promise((resolve, reject) => {
 
     const token = Cookies.get('token');
-    console.log(token)
     const headers = {
       Authorization: `Token ${token}`
     };
@@ -15,12 +14,10 @@ const handleAddToCart = (product, quantity) => {
       product: product.id,
       quantity: quantity
     };
-    console.log("Product", data.product)
-    console.log(data.quantity)
     axios.post(`${BASE_URL}cart-handler/add-to-cart/`, data, { headers })
       .then(response => {
         console.log('Product added to cart successfully');
-        resolve(response.data);
+        resolve(response);
       })
       .catch(error => {
         console.error('Error adding product to cart:', error);

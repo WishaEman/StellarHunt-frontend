@@ -8,13 +8,18 @@ const handleCheckout = async () => {
     Authorization: `Token ${token}`
   };
   try {
-    const response = axios.get(`${BASE_URL}cart-handler/checkout/`,
+    const response = await axios.get(`${BASE_URL}cart-handler/checkout/`,
         { headers })
-    if(response){
-       console.log("Successfully Checked Out")
-    }
-  } catch (error) {
-    console.log(error);
+     if (response.data.status === 400) {
+    console.log("Checkout failed");
+    return false;
+  } else {
+    console.log("Checkout successful");
+    return true;
+  }
+} catch (error) {
+  console.log(error);
+  return false;
   }
 };
 

@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
+import { Link } from "react-router-dom";
 import useAllCartItems from "./Services/ListItemsApi";
 import handleDelete from "./Services/DeleteApi";
+import { MyContext } from '../../data/MyContext';
 
 export default function ListCartProducts ({ updateTotalAmount }) {
   const { cartItems, removeCartItem } = useAllCartItems();
+  const { productQuantities, setProductQuantities } = useContext(MyContext);
 
-  if(cartItems)
+  if(cartItems.length > 0)
   {
      const calculateTotal = () => {
       return cartItems.reduce((acc, cartItem) => acc + cartItem.subtotal, 0);
@@ -15,10 +18,13 @@ export default function ListCartProducts ({ updateTotalAmount }) {
     updateTotalAmount(newTotal);
   }
 
-  const onDeleteClick = async (productID) => {
+  const onDeleteClick = async (cartItem) => {
     try {
-      await handleDelete(productID);
-      removeCartItem(productID);
+      await handleDelete(cartItem.product.id);
+      removeCartItem(cartItem.product.id);
+      const updatedProductQuantities = { ...productQuantities };
+      delete updatedProductQuantities[cartItem.product.id];
+      setProductQuantities(updatedProductQuantities);
     } catch (error) {
       console.error("Error deleting product:", error);
     }
@@ -26,7 +32,8 @@ export default function ListCartProducts ({ updateTotalAmount }) {
 
 
   return (
-      cartItems.map(cartItem => (
+      <>
+        {cartItems && Array.isArray(cartItems) && cartItems.map(cartItem => (
                 <tr key={cartItem.id}>
                   <th scope="row" className="border-0">
                     <div className="p-2">
@@ -39,9 +46,11 @@ export default function ListCartProducts ({ updateTotalAmount }) {
                         className="ml-5 d-inline-block align-middle"
                         style={{ marginLeft: '15px' }}
                       >
-                        <h5 className="mb-0 text-dark d-inline-block align-middle">
+                        <Link to={`/collections/products/${cartItem.product.id}`} state={{ product: cartItem.product }}>
+                        <h5 className="mb-0 text-dark d-inline-block align-middle text-decoration-underline">
                           {cartItem.product.title}
                         </h5>
+                        </Link>
                         <span
                           className="text-muted font-weight-normal d-block"
                           style={{ marginLeft: '15px' }}
@@ -60,10 +69,11 @@ export default function ListCartProducts ({ updateTotalAmount }) {
                   </td>
                   <td className="border-0 align-middle text-dark">
                     <i className="fa fa-trash"
-                        onClick={() => onDeleteClick(cartItem.product.id)}
+                        onClick={() => onDeleteClick(cartItem)}
                     ></i>
                   </td>
                 </tr>
-            ))
+            ))}
+      </>
   );
 }

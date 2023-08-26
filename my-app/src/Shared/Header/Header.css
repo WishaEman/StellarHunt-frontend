@@ -4,14 +4,6 @@
   margin-right: 20px;
 }
 
-.cart-btn {
-  font-size: 24px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-
-}
-
 .logo {
   display: block;
   margin: auto;
@@ -21,7 +13,7 @@
 
 .product-grid {
    width: 100%;
-   max-width: 720px;
+   max-width: 1200px;
    margin: auto;
 }
 
@@ -36,4 +28,14 @@
    height: 70%;
    display: block;
    margin: 0 auto;
+}
+
+.checkout-link {
+    margin-left: -100px;
+    margin-right: 20px;
+
+}
+
+.custom-navbar-bg {
+    background-color: lavenderblush;
 }
