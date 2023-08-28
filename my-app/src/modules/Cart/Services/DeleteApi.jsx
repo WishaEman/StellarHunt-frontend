@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "../../../data/constant";
 import Cookies from 'js-cookie';
 
-const handleDelete = async (productId) => {
+const  removeFromCart = async (productId) => {
   const token = Cookies.get('token');
   const headers = {
     Authorization: `Token ${token}`
@@ -18,4 +18,4 @@ const handleDelete = async (productId) => {
   }
 };
 
-export default handleDelete;
+export default  removeFromCart;

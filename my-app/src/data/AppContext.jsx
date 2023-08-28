@@ -1,9 +1,9 @@
 import { createContext, useState, useEffect } from 'react';
 import fetchTotalQuantityFromAPI from "./Services";
 
-export const MyContext = createContext();
+export const AppContext = createContext();
 
-export const MyContextProvider = ({ children }) => {
+export const AppContextProvider = ({ children }) => {
   const [productQuantities, setProductQuantities] = useState({});
   const [totalQuantity, setTotalQuantity] = useState(0);
 
@@ -24,9 +24,9 @@ export const MyContextProvider = ({ children }) => {
   }, [])
 
   return (
-    <MyContext.Provider value={{ totalQuantity,productQuantities, setProductQuantities, setTotalQuantity,
+    <AppContext.Provider value={{ totalQuantity,productQuantities, setProductQuantities, setTotalQuantity,
       updateTotalQuantity}}>
       {children}
-    </MyContext.Provider>
+    </AppContext.Provider>
   );
 };

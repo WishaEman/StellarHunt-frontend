@@ -1,11 +1,11 @@
 import './Header.css'
 import { useContext } from 'react';
-import { MyContext} from "../../data/MyContext";
+import {AppContext} from "../../data/AppContext";
 import {Link} from "react-router-dom";
 import { Badge } from 'react-bootstrap';
 
 export default function Header() {
-       const { totalQuantity } = useContext(MyContext);
+       const { totalQuantity } = useContext(AppContext);
        return (
         <>
         <nav className="navbar navbar-dark bg-black text-white d-flex justify-content-center align-items-center">
@@ -28,14 +28,14 @@ export default function Header() {
           </div>
           <div className="d-flex col-0.5 align-items-center checkout-link">
               <Link to="/account/login">
-                <i className="fa fa-user" style={{ fontSize: '24px', color: 'black' }}></i>
+                <i className="fa fa-user Icon"></i>
               </Link>
               <Link to="/order/checkout">
                  <button className="btn btn-link position-relative">
-                    <i className="fa fa-shopping-cart" style={{ fontSize: '24px', color: 'black' }}></i>
+                    <i className="fa fa-shopping-cart Icon"></i>
                     {totalQuantity > 0 && (
                       <Badge pill bg="danger" className="cart-badge position-absolute top-0 start-70
-                          translate-middle" style={{ fontSize: '10px' }}>
+                          translate-middle">
                           {totalQuantity}
                       </Badge>
                     )}

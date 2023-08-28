@@ -1,6 +1,6 @@
 import "../Header/Header.css"
 import {Link} from "react-router-dom";
-import MyRatingComponent from "../../modules/About/Ratings";
+import ProductRating from "../../modules/About/ProductRating";
 
 export default function Product({product}){
   const formattedPrice = product.price.toLocaleString();
@@ -11,7 +11,7 @@ export default function Product({product}){
             <img src={product.image} alt={product.title} className="flower-image" />
             <p className="text-dark">{product.title}</p>
           </Link>
-          <MyRatingComponent />
+          <ProductRating />
           <p>Rs. {formattedPrice}</p>
       </div>
   );

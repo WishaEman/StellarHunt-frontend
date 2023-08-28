@@ -1,7 +1,7 @@
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
-function MyRatingComponent() {
+function ProductRating() {
 
   return (
     <div>
@@ -15,4 +15,4 @@ function MyRatingComponent() {
   );
 }
 
-export default MyRatingComponent;
+export default ProductRating;

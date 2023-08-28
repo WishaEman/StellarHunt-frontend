@@ -1,12 +1,12 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import useAllCartItems from "./Services/ListItemsApi";
-import handleDelete from "./Services/DeleteApi";
-import { MyContext } from '../../data/MyContext';
+import removeFromCart from "./Services/DeleteApi";
+import { AppContext } from '../../data/AppContext';
 
 export default function ListCartProducts ({ updateTotalAmount }) {
   const { cartItems, removeCartItem } = useAllCartItems();
-  const { productQuantities, setProductQuantities } = useContext(MyContext);
+  const { productQuantities, setProductQuantities } = useContext(AppContext);
 
   if(cartItems.length > 0)
   {
@@ -18,18 +18,18 @@ export default function ListCartProducts ({ updateTotalAmount }) {
     updateTotalAmount(newTotal);
   }
 
-  const onDeleteClick = async (cartItem) => {
-    try {
-      await handleDelete(cartItem.product.id);
-      removeCartItem(cartItem.product.id);
-      const updatedProductQuantities = { ...productQuantities };
-      delete updatedProductQuantities[cartItem.product.id];
-      setProductQuantities(updatedProductQuantities);
-    } catch (error) {
-      console.error("Error deleting product:", error);
-    }
+  const handleOnClick = (cartItem) => {
+   removeFromCart(cartItem.product.id)
+      .then(() => {
+        removeCartItem(cartItem.product.id);
+        const updatedProductQuantities = { ...productQuantities };
+        delete updatedProductQuantities[cartItem.product.id];
+        setProductQuantities(updatedProductQuantities);
+      })
+      .catch(error => {
+        console.error("Error deleting product:", error);
+      });
   };
-
 
   return (
       <>
@@ -69,7 +69,7 @@ export default function ListCartProducts ({ updateTotalAmount }) {
                   </td>
                   <td className="border-0 align-middle text-dark">
                     <i className="fa fa-trash"
-                        onClick={() => onDeleteClick(cartItem)}
+                        onClick={() => handleOnClick(cartItem)}
                     ></i>
                   </td>
                 </tr>

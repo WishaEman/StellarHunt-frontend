@@ -5,7 +5,8 @@ export default function Footer() {
       <footer className="bg-dark text-center text-lg-start">
         <div className="text-center text-white p-4">
 
-          © 2023 Copyright: <Link to="/" className="text-decoration-none text-white">
+          © {new Date().getFullYear()} Copyright:{" "}
+          <Link to="/" className="text-decoration-none text-white">
           <b> StellarHunt.com </b></Link>
         </div>
       </footer>

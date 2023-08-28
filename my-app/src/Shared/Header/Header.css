@@ -11,6 +11,15 @@
   height: 100px;
 }
 
+.Icon {
+    font-size: 24px;
+    color: black;
+}
+
+.cart-badge {
+    font-size: 10px;
+}
+
 .product-grid {
    width: 100%;
    max-width: 1200px;
@@ -33,7 +42,6 @@
 .checkout-link {
     margin-left: -100px;
     margin-right: 20px;
-
 }
 
 .custom-navbar-bg {

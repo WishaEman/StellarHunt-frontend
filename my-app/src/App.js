@@ -6,7 +6,7 @@ import Home from './modules/Home/Home';
 import ProductDetails from './modules/About/ProductDetails';
 import Cart from './modules/Cart/Cart';
 import CheckoutSuccess from './modules/Cart/Checkout/CheckoutSuccess';
-import { MyContextProvider } from './data/MyContext';
+import { AppContextProvider } from './data/AppContext';
 
 const App = () => {
 
@@ -42,10 +42,10 @@ const App = () => {
   ]);
 
   return (
-    <MyContextProvider>
+    <AppContextProvider>
       <RouterProvider router={router}>
       </RouterProvider>
-    </MyContextProvider>
+    </AppContextProvider>
   );
 };
 

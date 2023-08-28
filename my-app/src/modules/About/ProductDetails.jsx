@@ -3,17 +3,17 @@ import {useState, useContext} from "react";
 import  ReactImageMagnify from "react-image-magnify";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { MyContext } from '../../data/MyContext';
+import { AppContext } from '../../data/AppContext';
 import Header from "../../Shared/Header/Header";
 import Footer from "../../Shared/Footer/Footer";
-import handleAddToCart from "./Services";
+import addToCart from "./Services";
 import Category from "../../Shared/Category/Category";
 
 export default function ProductDetails() {
   const location = useLocation();
   const { product} = location.state;
   const [quantity, setQuantity] = useState(1);
-  const { productQuantities, setProductQuantities } = useContext(MyContext);
+  const { productQuantities, setProductQuantities } = useContext(AppContext);
   const formattedPrice = product.price.toLocaleString();
 
 
@@ -27,15 +27,17 @@ export default function ProductDetails() {
     }
   };
 
-   const handleCartClick = async () => {
-    try {
-      await handleAddToCart(product, quantity);
-      setProductQuantities({...productQuantities, [product.id]: quantity, })
-    } catch (error) {
+ const handleCartClick = () => {
+  addToCart(product, quantity)
+    .then(() => {
+      setProductQuantities({...productQuantities, [product.id]: quantity });
+    })
+    .catch(error => {
       console.error('Error handling cart click:', error);
       toast.error("You need to be logged in to add items to the cart.");
-    }
+    });
   };
+
 
   return(
   <div>

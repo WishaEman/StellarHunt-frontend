@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "../../data/constant";
 import Cookies from 'js-cookie';
 
-const handleAddToCart = (product, quantity) => {
+const addToCart = (product, quantity) => {
 
   return new Promise((resolve, reject) => {
 
@@ -26,4 +26,4 @@ const handleAddToCart = (product, quantity) => {
   });
 };
 
-export default handleAddToCart;
+export default addToCart;
