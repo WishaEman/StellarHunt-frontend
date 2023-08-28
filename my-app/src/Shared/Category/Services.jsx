@@ -8,7 +8,7 @@ const useCategories = () => {
    useEffect(() => {
      axios.get(`${BASE_URL}inventory-management/categories/`)
     .then(response => {
-      setCategories(response.data);
+      setCategories(response.data.results);
     })
     .catch(error => {
           console.error('Error fetching categories:', error);

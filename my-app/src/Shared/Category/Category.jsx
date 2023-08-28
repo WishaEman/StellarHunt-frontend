@@ -3,7 +3,7 @@ import '../Header/Header.css'
 import useCategories from "./Services";
 import Subcategory from "../Subcategory/Subcategory";
 
-export default function Category({setSelectedSubcategory}){
+export default function Category(){
     const categories = useCategories()
 
      return (
@@ -16,7 +16,6 @@ export default function Category({setSelectedSubcategory}){
                             <Subcategory
                                 key={category.id}
                                 category={category}
-                                onSubcategoryClick={subcategoryTitle => setSelectedSubcategory(subcategoryTitle)}
                             />
                         ))}
                     </Nav>

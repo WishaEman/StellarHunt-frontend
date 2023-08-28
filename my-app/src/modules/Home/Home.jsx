@@ -1,55 +1,77 @@
+import { useEffect, useRef } from "react";
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from "../../Shared/Header/Header";
-import {useState, useEffect} from "react";
 import Category from '../../Shared/Category/Category'
 import Product from "../../Shared/Product/Product";
 import useProducts from "./Services";
 import CarouselComponent from "./Carousel";
 import Footer from  '../../Shared/Footer/Footer'
-import { useLocation } from 'react-router-dom';
 
 export default function Home() {
-    const [selectedSubcategory, setSelectedSubcategory] = useState('');
-    const products = useProducts(selectedSubcategory);
      const location = useLocation();
-     const loginSuccess = location.state?.loginSuccess || false;
-     const [showAlert, setShowAlert] = useState(loginSuccess);
+     const navigate = useNavigate();
+     const alertShownRef = useRef(false);
+     const subcategoryId = location.pathname.split("/")[3];
+     let { products , pagination,  fetchProducts } = useProducts(subcategoryId)
 
-      useEffect(() => {
-        if (loginSuccess) {
-          setShowAlert(true);
+     useEffect(() => {
+      if (location.state?.loginSuccess && !alertShownRef.current) {
+        alertShownRef.current = true;
+        toast.success("Successfully Login!");
+      }
+    }, [location.state?.loginSuccess]);
 
-          const timeout = setTimeout(() => {
-            setShowAlert(false);
-          }, 1000);
-
-          return () => clearTimeout(timeout);
-        }
-      }, [loginSuccess]);
+    const handleShopNowClick = (subcategoryId) => {
+      navigate(`/category/subcategory/${subcategoryId}`);
+    };
+    const handlePaginationClick = (url) => {
+       fetchProducts(url);
+    };
 
     return (
       <div>
-        <Header />
-        <Category setSelectedSubcategory={setSelectedSubcategory}/>
-        {showAlert && (
-        <div className="alert alert-success" role="alert">
-          Successful login alert!
-        </div>
-        )}
-        {!selectedSubcategory && <CarouselComponent setSelectedSubcategory={setSelectedSubcategory}/>}
-        {!selectedSubcategory && <div className="text-center">
-              <h6>Your Favourite</h6>
-              <h2>Flower Shop</h2>
-          </div>
-        }
-        <div className="product-grid">
-            <div className="center-content">
-            <br/><br/>{selectedSubcategory && <h2> {selectedSubcategory} </h2>}
+          <Header />
+          <Category />
+          <ToastContainer position="top-right" autoClose={2000} />
+         {!subcategoryId && (
+            <CarouselComponent  onShopNowClick={handleShopNowClick}/>
+         )}
+          {!subcategoryId && <div className="text-center">
+                <h6>Your Favourite</h6>
+                <h2>Flower Shop</h2>
             </div>
-            {
-              products.map((product) => (<Product product={product}/>))
-            }
-        </div>
-        <Footer />
+          }
+          <div className="product-grid">
+            {products.length > 0 && subcategoryId && (
+              <div className="center-content">
+                <br/>
+                <br/>
+                <h2>{products[0].subcategory.title}</h2>
+                <br/>
+              </div>
+            )}
+            {products.map((product) => (
+              <Product product={product} key={product.id} />
+            ))}
+            <br />
+            <div className="pagination">
+              {pagination?.previous && (
+                <button className="btn btn-secondary" onClick={() => handlePaginationClick(pagination.previous)}>
+                  Previous
+                </button>
+              )}
+              <br />
+              {pagination?.next && (
+                <button className="btn btn-success" onClick={() => handlePaginationClick(pagination.next)}>
+                  Next
+                </button>
+              )}
+            </div>
+            <br />
+          </div>
+          <Footer />
       </div>
     );
 }
