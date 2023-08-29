@@ -1,9 +1,7 @@
 import {useState} from "react";
-import Header from "../../Shared/Header/Header";
 import ListCartProducts from "./ListCartProducts";
 import Checkout from "./Checkout/Checkout";
 import Category from "../../Shared/Category/Category";
-import Footer from "../../Shared/Footer/Footer";
 
 export default function Cart() {
   const [totalAmount, setTotalAmount] = useState(0);
@@ -13,7 +11,6 @@ export default function Cart() {
   };
   return(
       <>
-        <Header />
         <Category />
         <div className="px-4 px-lg-0">
           <div className="container text-dark py-5 text-center">
@@ -68,7 +65,6 @@ export default function Cart() {
 
           </div>
         </div>
-        <Footer />
       </>
   );
 }

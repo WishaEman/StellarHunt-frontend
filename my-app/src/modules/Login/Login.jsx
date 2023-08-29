@@ -1,8 +1,6 @@
 import './Login.css'
 import { useState, useEffect } from "react";
 import handleLogin from "./Services";
-import Header from "../../Shared/Header/Header";
-import Footer from "../../Shared/Footer/Footer";
 import {Link, useNavigate} from "react-router-dom";
 import Category from "../../Shared/Category/Category";
 
@@ -33,7 +31,6 @@ export default function Login() {
 
   return (
       <div>
-        <Header />
         <Category />
         <br /><br/>
         <h2 className="center-content mt-5 pt-5"> Customer Login </h2><br/>
@@ -88,8 +85,6 @@ export default function Login() {
           </div>
           <br/>
         </form>
-        <br/><br/><br/><br/><br/><br/>
-        <Footer />
       </div>
   );
 }

@@ -1,14 +1,14 @@
 import  { useState } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import signupApi from './Services'
 import './Signup.css'
-import Header from "../../Shared/Header/Header";
-import Footer from "../../Shared/Footer/Footer";
 import Category from "../../Shared/Category/Category";
+import Cookies from "js-cookie";
 
 export default function Signup() {
   const [isSignupSuccessful, setIsSignupSuccessful] = useState(false);
   const [isSignupNotSuccessful, setIsSignupNotSuccessful] = useState(false);
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     full_name: '',
@@ -26,11 +26,13 @@ export default function Signup() {
     signupApi(formData)
       .then((response) => {
         console.log('Signup successful!', response);
+        const token = response.data.token;
+        Cookies.set('token', token, { expires: 1 });
         setIsSignupSuccessful(true);
         setTimeout(() => {
           setIsSignupSuccessful(false);
-          window.location.href = `/account/login`;
-        }, 4000);
+          navigate('/')
+        }, 2000);
       })
       .catch((error) => {
         setIsSignupNotSuccessful(true);
@@ -44,7 +46,6 @@ export default function Signup() {
 
   return (
       <>
-      <Header />
       <Category />
         {/* Conditional rendering of the success alert */}
       {isSignupSuccessful && (
@@ -248,7 +249,6 @@ export default function Signup() {
               </div>
           </div>
       </div>
-        <Footer />
       </>
   );
 }

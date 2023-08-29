@@ -62,7 +62,7 @@ export default function ListCartProducts ({ updateTotalAmount }) {
                     </div>
                   </th>
                   <td className="border-0 align-middle">
-                    <strong>${cartItem.subtotal}</strong>
+                    <strong>Rs. {cartItem.subtotal}</strong>
                   </td>
                   <td className="border-0 align-middle">
                     <strong>{cartItem.quantity}</strong>

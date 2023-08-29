@@ -4,8 +4,6 @@ import  ReactImageMagnify from "react-image-magnify";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AppContext } from '../../data/AppContext';
-import Header from "../../Shared/Header/Header";
-import Footer from "../../Shared/Footer/Footer";
 import addToCart from "./Services";
 import Category from "../../Shared/Category/Category";
 
@@ -41,7 +39,6 @@ export default function ProductDetails() {
 
   return(
   <div>
-      <Header />
       <Category />
       <ToastContainer position="top-right" autoClose={3000} />
       <div className="container">
@@ -62,7 +59,7 @@ export default function ProductDetails() {
               }}
             />
           </div>
-          <div className="col-md-6 pt-5" >
+          <div className="col-md-5 pt-5" >
               <br /><br/>
               <h2>{product.title}</h2><br/>
               <p>{product.description}</p><br />
@@ -83,7 +80,6 @@ export default function ProductDetails() {
         </div>
       </div>
       <br/>
-      <Footer />
   </div>
   );
 }

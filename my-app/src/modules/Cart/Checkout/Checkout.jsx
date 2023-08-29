@@ -35,19 +35,19 @@ export default function Checkout ({totalAmount}){
             <ul className="list-unstyled mb-4">
               <li className="d-flex justify-content-between py-3 border-bottom">
                 <strong className="text-muted">Order Subtotal</strong>
-                <strong>${totalAmount}</strong>
+                <strong>Rs. {totalAmount}</strong>
               </li>
               <li className="d-flex justify-content-between py-3 border-bottom">
                 <strong className="text-muted">Shipping and handling</strong>
-                <strong>$10.00</strong>
+                <strong>Rs. 10.00</strong>
               </li>
               <li className="d-flex justify-content-between py-3 border-bottom">
                 <strong className="text-muted">Tax</strong>
-                <strong>$0.00</strong>
+                <strong>Rs. 0.00</strong>
               </li>
               <li className="d-flex justify-content-between py-3 border-bottom">
                 <strong className="text-muted">Total</strong>
-                <h5 className="font-weight-bold">${totalAmount + parseFloat(10)}</h5>
+                <h5 className="font-weight-bold">Rs. {totalAmount + parseFloat(10)}</h5>
               </li>
             </ul>
             <div className="row">

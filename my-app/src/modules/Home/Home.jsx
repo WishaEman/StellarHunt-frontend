@@ -2,12 +2,10 @@ import { useEffect, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from "../../Shared/Header/Header";
 import Category from '../../Shared/Category/Category'
 import Product from "../../Shared/Product/Product";
 import useProducts from "./Services";
 import CarouselComponent from "./Carousel";
-import Footer from  '../../Shared/Footer/Footer'
 
 export default function Home() {
      const location = useLocation();
@@ -32,7 +30,6 @@ export default function Home() {
 
     return (
       <div>
-          <Header />
           <Category />
           <ToastContainer position="top-right" autoClose={2000} />
          {!subcategoryId && (
@@ -71,7 +68,6 @@ export default function Home() {
             </div>
             <br />
           </div>
-          <Footer />
       </div>
     );
 }

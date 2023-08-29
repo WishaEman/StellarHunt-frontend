@@ -2,8 +2,6 @@ import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { Typography, Button } from '@mui/material';
 import handleLogout from "../Services/LogoutApi";
-import Header from "../../../Shared/Header/Header";
-import Footer from "../../../Shared/Footer/Footer";
 import "./Style.css"
 
 function CheckoutSuccess() {
@@ -21,7 +19,6 @@ function CheckoutSuccess() {
 
   return (
     <>
-      <Header />
       <div className="checkout-success-container">
         <Typography variant="h4" gutterBottom>
           Order Placed Successfully
@@ -40,8 +37,6 @@ function CheckoutSuccess() {
           Logout
         </p>
       </div>
-      <br /><br/>
-      <Footer />
     </>
   );
 }
