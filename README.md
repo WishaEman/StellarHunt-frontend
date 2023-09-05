@@ -3,12 +3,12 @@
 StellarHunt is a beautiful and user-friendly flower shop frontend website built using React. This frontend interacts 
 with a Django backend API to provide a seamless shopping experience for users. Whether you are looking to buy flowers
 for a special occasion or just to brighten up your day, StellarHunt has got you covered.
-<div style="text-align: center;" >
-   <img align="center" src="https://github.com/WishaEman/StellarHunt-frontend/blob/main/my-app/public/media/StellarHunt.png" width="30%" height="50%">
+<div style="text-align: center;">
+   <img src="https://github.com/WishaEman/StellarHunt-frontend/blob/main/my-app/public/media/StellarHunt.png" width="30%" height="50%" style="display: block; margin: 0 auto;">
 </div>
 
 
-`Features`
+**Features**
 
 StellarHunt offers a range of features to make your flower shopping experience enjoyable and hassle-free:
 
@@ -23,16 +23,16 @@ their cart.
 wish to purchase.
 * `Checkout`: A seamless checkout process where users can see payment details to complete their purchase.
 
-`Getting Started`
+**Getting Started**
 
 To run StellarHunt on your local machine, follow these steps:
 
-`Prerequisites`
+**Prerequisites**
 * Node.js and npm installed on your computer.
 * A running Django backend server. Ensure the API endpoints for products, categories, and user authentication 
 are correctly configured.
 
-`Installation`
+**Installation**
 1. Clone the repository to your local machine:
     ```bash
        git clone https://github.com/WishaEman/StellarHunt-frontend.git
@@ -48,7 +48,7 @@ are correctly configured.
        npm install
     ```
 
-`Configuration`
+**Configuration**
 
 1. Open the .env file in the project root directory and configure the API endpoint for your Django backend:
    ```env
@@ -57,7 +57,7 @@ are correctly configured.
 
 2. Update any other configuration settings as needed, such as the authentication settings.
 
-`Running the Application`
+**Running the Application**
 
 1. Start the development server:
    ```bash
@@ -66,7 +66,7 @@ are correctly configured.
 
 2. Open your web browser and access the application at `http://localhost:3000`.
 
-`Contributing`
+**Contributing**
 
 If you'd like to contribute, please follow these guidelines:
 
