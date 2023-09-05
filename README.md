@@ -3,8 +3,9 @@
 StellarHunt is a beautiful and user-friendly flower shop frontend website built using React. This frontend interacts 
 with a Django backend API to provide a seamless shopping experience for users. Whether you are looking to buy flowers
 for a special occasion or just to brighten up your day, StellarHunt has got you covered.
-<img src="https://github.com/WishaEman/StellarHunt-frontend/blob/main/my-app/public/media/StellarHunt.png" height="30%", height="50%" />
-[//]: # (<![StellarHunt.png]&#40;my-app%2Fpublic%2Fmedia%2FStellarHunt.png&#41;>)
+
+<img align="center" src="https://github.com/WishaEman/StellarHunt-frontend/blob/main/my-app/public/media/StellarHunt.png" width="30%" height="50%">
+
 
 `Features`
 
