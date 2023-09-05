@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beb04cf8-7957-42be-8a3b-e182cf1057f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +54,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/my-app/src/Shared/Layout" />
       <recent name="$PROJECT_DIR$/my-app/src/modules/Cart/Services" />
@@ -70,7 +75,7 @@
       <updated>1691340330226</updated>
       <workItem from="1691340332381" duration="105732000" />
       <workItem from="1692300498699" duration="119433000" />
-      <workItem from="1693898957499" duration="2485000" />
+      <workItem from="1693898957499" duration="2788000" />
     </task>
     <servers />
   </component>
